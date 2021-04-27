@@ -1,0 +1,12 @@
+.idea/
+
+alibaba-dubbo-rpc/east-lake/base/target/
+alibaba-dubbo-rpc/east-lake/admin/target/
+alibaba-dubbo-rpc/east-lake/api/target/
+alibaba-dubbo-rpc/east-lake/order/target/
+alibaba-dubbo-rpc/east-lake/user/target/
+
+alibaba-feign-rpc/base/target/
+alibaba-feign-rpc/gateway/target/
+alibaba-feign-rpc/order/target/
+alibaba-feign-rpc/user/target/
