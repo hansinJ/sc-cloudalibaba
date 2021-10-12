@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableDiscoveryClient
 @EnableAdminServer
-@ComponentScan(basePackages = {"com.hansin.admin"})
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.hansin.admin"})
 public class AdminApplication {
 
     public static void main(String[] args) {

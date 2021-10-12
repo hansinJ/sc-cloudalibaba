@@ -2,7 +2,7 @@ package com.sl.user.controller;
 
 import com.sl.common.model.UserModel;
 import com.sl.framework.common.model.ApiResult;
-import com.sl.user.service.UserService;
+import com.sl.user.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("v1/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
     @Value("${server.port}")
     private String port;
 
