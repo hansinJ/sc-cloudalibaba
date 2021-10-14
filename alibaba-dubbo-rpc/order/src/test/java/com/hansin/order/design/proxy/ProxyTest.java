@@ -1,4 +1,4 @@
-package com.hansin.order.design;
+package com.hansin.order.design.proxy;
 
 import com.hansin.order.BaseTest;
 import com.hansin.order.design.proxy.Consumer;
