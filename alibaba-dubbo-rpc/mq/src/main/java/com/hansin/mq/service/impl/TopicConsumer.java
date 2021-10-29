@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.List;
  **/
 @Service
 public class TopicConsumer extends AbstractConsumer {
+    @Value("${rocketmq.namesrv}")
+    private String namesrv;
 
     /**
      * 接收消息，根据topic及tag匹配
@@ -25,7 +28,7 @@ public class TopicConsumer extends AbstractConsumer {
     @Override
     public void topicReceive() throws Exception {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(MqConst.SYN_GROUP);
-        consumer.setNamesrvAddr("192.168.1.31:9876");
+        consumer.setNamesrvAddr(namesrv);
         // 订阅一个或者多个Topic，以及Tag来过滤需要消费的消息
         consumer.subscribe(MqConst.TEST_TOPIC_1, "*");
         // 注册回调实现类处理从brokder拉取回来的消息

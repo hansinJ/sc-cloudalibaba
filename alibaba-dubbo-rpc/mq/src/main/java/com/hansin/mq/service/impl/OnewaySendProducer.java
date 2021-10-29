@@ -5,6 +5,7 @@ import com.hansin.mq.service.AbstractProducer;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class OnewaySendProducer extends AbstractProducer {
+    @Value("${rocketmq.namesrv}")
+    private String namesrv;
 
     /**
      * 发送单向消息，没有任何返回结果
@@ -21,7 +24,7 @@ public class OnewaySendProducer extends AbstractProducer {
     @Override
     public void onewaySend() throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer(MqConst.ONEWAY_GROUP);
-        producer.setNamesrvAddr("192.168.1.31:9876");
+        producer.setNamesrvAddr(namesrv);
         producer.start();
         for (int i = 0; i < 100; i++) {
             Message message = new Message(MqConst.ONEWAY_TOPIC,

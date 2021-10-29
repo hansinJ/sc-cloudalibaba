@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class SyncProducer extends AbstractProducer {
+    @Value("${rocketmq.namesrv}")
+    private String namesrv;
+
     /**
      * 发送同步消息
      * @return
@@ -24,7 +28,7 @@ public class SyncProducer extends AbstractProducer {
         // 实例化消息生产者
         DefaultMQProducer producer = new DefaultMQProducer(MqConst.SYN_GROUP);
         // 设置nameSrv地址
-        producer.setNamesrvAddr("192.168.1.31:9876");
+        producer.setNamesrvAddr(namesrv);
         // 启动producer实例
         producer.start();
 

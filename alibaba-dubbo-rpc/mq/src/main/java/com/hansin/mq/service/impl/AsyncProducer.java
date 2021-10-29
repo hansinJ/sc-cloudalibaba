@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -18,6 +19,8 @@ import java.util.concurrent.TimeUnit;
  **/
 @Service
 public class AsyncProducer extends AbstractProducer {
+    @Value("${rocketmq.namesrv}")
+    private String namesrv;
 
     /**
      * 发送异步消息
@@ -27,7 +30,7 @@ public class AsyncProducer extends AbstractProducer {
     @Override
     public void asyncSend() throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer(MqConst.ASYN_GROUP);
-        producer.setNamesrvAddr("192.168.1.31:9876");
+        producer.setNamesrvAddr(namesrv);
         producer.start();
         producer.setRetryTimesWhenSendAsyncFailed(0);
 
