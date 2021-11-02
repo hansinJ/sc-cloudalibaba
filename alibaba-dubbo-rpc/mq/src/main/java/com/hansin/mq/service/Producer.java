@@ -21,4 +21,8 @@ public interface Producer {
     void asyncSend() throws Exception;
 
     void onewaySend() throws Exception;
+
+    void scheduledSend() throws Exception;
+
+    void batchSend() throws Exception;
 }

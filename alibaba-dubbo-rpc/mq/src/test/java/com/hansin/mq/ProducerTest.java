@@ -18,20 +18,17 @@ public class ProducerTest extends BaseTest {
     @Autowired
     @Qualifier("topicConsumer")
     private Consumer consumer;
+    @Autowired
+    @Qualifier("scheduledProducer")
+    private Producer scheduledProducer;
 
     @Test
     public void simpleSend() throws Exception {
         producer.syncSend();
     }
 
-
-    @Before
-    public void setUp() throws Exception {
-        topicConsumerTest();
-    }
-
-    public void topicConsumerTest() throws Exception{
-        consumer.topicReceive();
-//        Thread.sleep(50000);
+    @Test
+    public void scheduleSend() throws Exception{
+        scheduledProducer.scheduledSend();
     }
 }

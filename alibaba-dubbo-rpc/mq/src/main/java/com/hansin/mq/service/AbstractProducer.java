@@ -20,4 +20,14 @@ public class AbstractProducer implements Producer{
     public void onewaySend() throws Exception {
 
     }
+
+    @Override
+    public void scheduledSend() throws Exception {
+
+    }
+
+    @Override
+    public void batchSend() throws Exception {
+
+    }
 }
